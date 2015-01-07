@@ -19,7 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:ems="10"
-        
+        android:textColor="@color/text_color"
         android:textSize="16.5sp"
         android:text="Measuring Parkinson&apos;s sympthoms"
         >
