@@ -2,6 +2,6 @@ package com.example.qq;
 
 public enum Type {
 
-	TypingTest,
-	HoldingStill
+	TYPING_TEST,
+	HOLDING_STILL_TEST
 }
