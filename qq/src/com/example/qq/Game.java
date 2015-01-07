@@ -26,6 +26,10 @@ public class Game {
 		this.dateAndTime=time;
 		}
 	
+	public Game(){
+		
+		}
+	
 	public String getGameType(){
 		return name;
 	}

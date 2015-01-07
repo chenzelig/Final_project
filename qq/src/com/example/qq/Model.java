@@ -3,13 +3,16 @@ package com.example.qq;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import com.parse.Parse;
+
+
+
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import android.content.Context;
 import android.net.ParseException;
+import android.content.Context;
 import android.util.Log;
 
 
@@ -66,9 +69,10 @@ public class Model {
 		return po;
 	}
 
-	public ArrayList<Game> getAllGames() throws com.parse.ParseException{
+	public ArrayList<Game> getAllGames(String userId, String gameType) throws com.parse.ParseException{
 		Log.d("HY", "Model - Getting all Games");
 		ArrayList<Game> games = new ArrayList<Game>();
+		Game checkGame = new Game(); 
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("games");
 		try{
 			List<ParseObject> objects=query.find() ;
@@ -76,8 +80,12 @@ public class Model {
 				Log.d("HY", "Model - Getting all games- done (), objects.size()=" +objects.size() );
 
 				for(ParseObject o: objects){
-					games.add(jsonToGame(o));
+					checkGame=jsonToGame(o);
+					if(checkGame.getGameType().equals(gameType) && checkGame.getUserId().equals(userId)){
+						games.add(checkGame);	
+					}
 				}
+				
 				Log.d("HY", "Model - after coversion game.size()=" +games.size());
 			}
 		}
@@ -96,6 +104,9 @@ public class Model {
 		Log.d("HY", "Model - jsonToStudent" +game );
 		return game;
 	}
+	
+	
+
 	
 	
 }
